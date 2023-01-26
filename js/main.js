@@ -27,7 +27,7 @@ const canvas = document.getElementById("game");
 const game = canvas.getContext('2d');
 const scoreBoard = document.getElementById("score");
 
-// set size of canvas, ofcourse it is not adaptive
+// set size of canvas, it is not adaptive :(
 game.canvas.width = canvasWidth;
 game.canvas.height = canvasHeight;
 
