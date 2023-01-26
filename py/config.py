@@ -5,7 +5,7 @@ caption = "5NAK3 GAM3"
 background = (200, 200, 200)
 
 # font
-ff = "Comic Sans MS"
+ff = "Sans Serif"
 
 # score
 score_fsize = 60
