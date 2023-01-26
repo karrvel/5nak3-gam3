@@ -2,7 +2,9 @@
 #include <QTime>
 #include <QKeyEvent>
 
-#include <random>
+#include <cstdlib>
+#include <iostream>
+#include <time.h>
 #include "game.h"
 
 Snake::Snake(QWidget *parent) : QWidget(parent){
@@ -18,8 +20,11 @@ Snake::Snake(QWidget *parent) : QWidget(parent){
   apple.assign({-1, -1});
 
   generateSnake();
-  generateApple();
+  generateApple(); // huh, it is generating the same vector at each run
   timerId = startTimer(1000 / snakeSpeed);
+
+  // random
+  std::srand(std::time(0));
 }
 
 void Snake::paintEvent(QPaintEvent *e){  
@@ -196,16 +201,8 @@ void Snake::drawSnake(){
 
 /* APPLE */
 void Snake::generateApple(){
-  std::random_device rd; // obtain a random number from hardware
-  std::mt19937 gen(rd()); // seed the generator
-  
-  // x
-  std::uniform_int_distribution<> distrX(0, WIDTH / cellWidth - 1); // define the range
-  apple[0] = distrX(gen);
-
-  // y
-  std::uniform_int_distribution<> distrY(0, HEIGHT / cellHeight - 1); // define the range
-  apple[1] = distrY(gen);
+  apple[0] = std::rand() % (WIDTH / cellWidth);
+  apple[1] = std::rand() % (HEIGHT / cellHeight);
 
   for(std::vector<long long int> e : snake)
     if(apple[0] == e[0] && apple[1] == e[1])

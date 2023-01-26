@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QWidget>
+#include <random>
 #include <vector>
 
 /* CONFIG */
